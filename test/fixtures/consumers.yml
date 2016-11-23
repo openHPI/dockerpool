@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  oauth_secret: MyString
+  oauth_session_key: MyString
+  oauth_session_expires: 2016-11-23 13:59:17
+
+two:
+  name: MyString
+  oauth_secret: MyString
+  oauth_session_key: MyString
+  oauth_session_expires: 2016-11-23 13:59:17

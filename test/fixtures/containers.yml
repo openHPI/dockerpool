@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  docker_id: MyString
+  blocked_since: 2016-11-23 14:01:14
+  consumer_id: 
+  usages: 1
+  runtime: 1
+  active: false
+
+two:
+  docker_id: MyString
+  blocked_since: 2016-11-23 14:01:14
+  consumer_id: 
+  usages: 1
+  runtime: 1
+  active: false
