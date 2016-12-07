@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123133044) do
+ActiveRecord::Schema.define(version: 20161207142032) do
 
   create_table "consumers", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20161123133044) do
     t.datetime "oauth_session_expires"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.string   "oauth_key"
   end
 
   create_table "consumers_pools", id: false, force: :cascade do |t|
@@ -39,15 +40,15 @@ ActiveRecord::Schema.define(version: 20161123133044) do
     t.boolean  "active"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "deamon_id"
+    t.integer  "daemon_id"
     t.integer  "pool_id"
   end
 
   add_index "containers", ["consumer_id"], name: "index_containers_on_consumer_id"
-  add_index "containers", ["deamon_id"], name: "index_containers_on_deamon_id"
+  add_index "containers", ["daemon_id"], name: "index_containers_on_daemon_id"
   add_index "containers", ["pool_id"], name: "index_containers_on_pool_id"
 
-  create_table "deamons", force: :cascade do |t|
+  create_table "daemons", force: :cascade do |t|
     t.string   "ip"
     t.integer  "port"
     t.integer  "pool_id"
@@ -55,7 +56,7 @@ ActiveRecord::Schema.define(version: 20161123133044) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "deamons", ["pool_id"], name: "index_deamons_on_pool_id"
+  add_index "daemons", ["pool_id"], name: "index_daemons_on_pool_id"
 
   create_table "pools", force: :cascade do |t|
     t.string   "image"
