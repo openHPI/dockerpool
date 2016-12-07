@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Pool List</div>
+  <div class="panel-body">An overview of all pools</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Pool</th>
+        <th>Docker-Image</th>
+        <th>Min. containers</th>
+        <th>Max. containers</th>
+        <th>Current containers</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @pools.each do |pool| %>
+      <tr>
+        <td><%= pool.id %></td>
+        <td><%= pool.image %></td>
+        <td><%= pool.min %></td>
+        <td><%= pool.max %></td>
+        <td><%= pool.current %></td>
+        <td>
+          <div class="btn-group">
+            <%= link_to('Edit', edit_pool_path(pool), class: 'btn btn-primary btn-xs') %>
+            <%= button_to('Destroy', destroy_pool_path(pool), class: 'btn btn-danger btn-xs') %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

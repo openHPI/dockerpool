@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Container List</div>
+  <div class="panel-body">An overview of all containers</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Pool</th>
+        <th>Docker-ID</th>
+        <th>Daemon</th>
+        <th>Assigned consumer</th>
+        <th>Assigned since</th>
+        <th>Usages</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @containers.each do |container| %>
+      <tr>
+        <td><%= container.pool.name %></td>
+        <td><%= container.docker_id %></td>
+        <td><%= container.daemon.address %></td>
+        <td><%= container.consumer.name %></td>
+        <td><%= container.blocked_since %></td>
+        <td><%= container.usages %></td>
+        <td>
+          <%= button_to('Destroy', destroy_container_path(container), class: 'btn btn-xs btn-danger') %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
