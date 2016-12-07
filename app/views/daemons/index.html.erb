@@ -1,10 +1,13 @@
 <div class="panel panel-default">
   <div class="panel-heading">Daemon List</div>
-  <div class="panel-body">An overview of all daemons</div>
+  <div class="panel-body">An overview of all daemons
+    <div class="pull-right">
+      <%= link_to('Create new',new_daemon_path,class:'btn btn-default') %>
+    </div>
+  </div>
   <table class="table">
     <thead>
       <tr>
-        <th>Pool</th>
         <th>IP-Address</th>
         <th>Port</th>
         <th>Actions</th>
@@ -13,14 +16,12 @@
     <tbody>
     <% @daemons.each do |daemon| %>
       <tr>
-        <td><%= daemon.pool.name %></td>
         <td><%= daemon.ip %></td>
         <td><%= daemon.port %></td>
         <td>
-          <div class="btn-group">#
-            <%= link_to('Edit', edit_daemon_path(daemon), class:'btn btn-xs btn-primary') %>
-            <%= button_to('Destroy', destroy_daemon_path(daemon), class:'btn btn-xs btn-danger') %>
-          </div>
+          <%= link_to('Show stats', daemon_path(daemon), class: 'btn btn-default btn-xs') %>
+          <%= link_to('Edit', edit_daemon_path(daemon), class:'btn btn-xs btn-default') %>
+          <%= button_to('Destroy', daemon_path(daemon), method: :delete, form_class:'form-inline', class:'btn btn-xs btn-danger') %>
         </td>
       </tr>
     <% end %>

@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">Pool for <%= @pool.image %></div>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Attribute</th>
+          <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Image</td>
+          <td><%= @pool.image %></td>
+        </tr>
+        <tr>
+          <td>Minimal container amount</td>
+          <td><%= @pool.min %></td>
+        </tr>
+        <tr>
+          <td>Maximal container amount</td>
+          <td><%= @pool.max %></td>
+        </tr>
+        <tr>
+          <td>Container runtime until reset</td>
+          <td><%= @pool.max_runtime %></td>
+        </tr>
+        <tr>
+          <td>Container usages until reset</td>
+          <td><%= @pool.max_usages %></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <%= render :partial => 'daemons/stats', :locals => {daemon: @pool.daemon} %>
+  </div>
+</div>
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading">Containers assigned to this pool</div>
+    <%= render :partial => 'containers/list', :locals => {containers: @pool.containers} %>
+  </div>
+</div>

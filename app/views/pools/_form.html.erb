@@ -1,0 +1,39 @@
+<%= form_for(@pool, class:'form-horizontal') do |f| %>
+    <div class="form-group">
+      <%= f.label :image %>
+      <%= f.text_field(:image, class: 'form-control') %>
+    </div>
+    <div class="form-group">
+      <%= f.label :min %>
+      <%= f.text_field(:min, class: 'form-control') %>
+    </div>
+    <div class="form-group">
+      <%= f.label :max %>
+      <%= f.text_field(:max, class: 'form-control') %>
+    </div>
+    <div class="form-group">
+      <%= f.label :max_usages %>
+      <%= f.text_field(:max_usages, class: 'form-control') %>
+    </div>
+    <div class="form-group">
+      <%= f.label :max_runtime %>
+      <%= f.text_field(:max_runtime, class: 'form-control') %>
+    </div>
+    <div class="form-group">
+      <%= f.label :exposed_ports %>
+      <%= f.text_field(:exposed_ports, class: 'form-control') %>
+    </div>
+    <div class="form-group">
+      <%= f.label :network_enabled %>
+      <%= f.check_box(:network_enabled, class: 'form-control') %>
+    </div>
+    <div class="form-group">
+      <%= f.label :memory_limit %>
+      <%= f.text_field(:memory_limit, class: 'form-control') %>
+    </div>
+    <div class="form-group">
+      <%= f.label :daemon_id %>
+      <%= f.collection_select(:daemon_id, Daemon.all, :id, :address, class: 'form-control') %>
+    </div>
+    <%= f.submit(class: 'btn btn-primary') %>
+<% end %>

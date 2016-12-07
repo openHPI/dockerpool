@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Daemon on <%= daemon.address %></div>
+  <table class="table">
+    <tbody>
+    <tr>
+      <td>Containers</td>
+      <td><%= daemon.container_count %></td>
+    </tr>
+    <tr>
+      <td>Running containers</td>
+      <td><%= daemon.blocked_container_count %></td>
+    </tr>
+    <tr>
+      <td>Destroyed containers</td>
+      <td><%= daemon.removed_container_count %></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

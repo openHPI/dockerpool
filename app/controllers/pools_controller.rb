@@ -7,13 +7,14 @@ class PoolsController < ApplicationController
   def create
     @pool = Pool.new(pool_params)
     if @pool.save
-      redirect_to @pool, notice: 'Pool was created successfully'
+      redirect_to @pool, flash: {notice: 'Pool was created successfully'}
     else
       render :new
     end
   end
 
   def new
+    @pool = Pool.new
   end
 
   def show
@@ -26,12 +27,13 @@ class PoolsController < ApplicationController
 
   def update
     if @pool.update_attributes(pool_params)
-      redirect_to :back, notice: 'Pool was updated successfully!'
+      redirect_to :back, flash: {notice: 'Pool was updated successfully!'}
     end
   end
 
   def destroy
-
+    @pool.destroy
+    redirect_to :pools, flash: {notice: 'Pool was removed successfully!'}
   end
 
   private

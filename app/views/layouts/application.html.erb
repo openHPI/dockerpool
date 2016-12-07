@@ -39,7 +39,7 @@
 <div class="col-lg-10 col-lg-offset-1">
   <div class="row">
     <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
+        <div class="alert alert-<%= key == 'notice' ? 'success' : 'warning' %>"><%= value %></div>
     <% end %>
     <%= yield %>
   </div>

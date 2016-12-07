@@ -1,0 +1,39 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>Pool</th>
+    <th>Daemon</th>
+    <th>Docker-ID</th>
+    <th>Assigned consumer</th>
+    <th>Assigned since</th>
+    <th>Usages</th>
+    <th>Still available</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% containers.each do |container| %>
+      <tr class="<%=
+          if !container.active
+            'danger'
+          elsif container.blocked_since != nil
+            'info'
+          else
+            ''
+          end
+      %>">
+        <td><%= container.pool.name %></td>
+        <td><%= container.daemon.address %></td>
+        <td><%= container.docker_id %></td>
+        <td><%= container.consumer.name %></td>
+        <td><%= container.blocked_since %></td>
+        <td><%= container.usages %></td>
+        <td><%= container.active ? 'Yes' : 'No' %></td>
+        <td>
+          <%= link_to('Details', container_path(container), class: 'btn btn-default btn-xs') %>
+          <%= button_to('Destroy', destroy_container_path(container), form_class:'form-inline', class: 'btn btn-xs btn-danger') %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207142032) do
+ActiveRecord::Schema.define(version: 20161207163734) do
 
   create_table "consumers", force: :cascade do |t|
     t.string   "name"
@@ -51,12 +51,9 @@ ActiveRecord::Schema.define(version: 20161207142032) do
   create_table "daemons", force: :cascade do |t|
     t.string   "ip"
     t.integer  "port"
-    t.integer  "pool_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "daemons", ["pool_id"], name: "index_daemons_on_pool_id"
 
   create_table "pools", force: :cascade do |t|
     t.string   "image"
@@ -64,9 +61,15 @@ ActiveRecord::Schema.define(version: 20161207142032) do
     t.integer  "max"
     t.integer  "max_runtime"
     t.integer  "max_usages"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "daemon_id"
+    t.integer  "memory_limit"
+    t.boolean  "network_enabled"
+    t.string   "exposed_ports"
   end
+
+  add_index "pools", ["daemon_id"], name: "index_pools_on_daemon_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

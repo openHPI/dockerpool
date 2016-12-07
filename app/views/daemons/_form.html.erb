@@ -1,0 +1,11 @@
+<%= form_for(@daemon, class:'form-horizontal') do |f| %>
+    <div class="form-group">
+      <%= f.label :ip %>
+      <%= f.text_field(:ip, class: 'form-control') %>
+    </div>
+    <div class="form-group">
+      <%= f.label :port %>
+      <%= f.text_field(:port, class: 'form-control') %>
+    </div>
+    <%= f.submit(class: 'btn btn-primary') %>
+<% end %>

@@ -1,0 +1,7 @@
+<div class="col-md-6">
+  <%= render :partial => 'stats', :locals => {daemon: @daemon} %>
+</div>
+
+<div class="col-md-6">
+  <%= render :partial => 'containers/list', :locals => {containers: @daemon.containers} %>
+</div>

@@ -1,0 +1,10 @@
+<div class="col-md-6">
+  <%= render :partial => 'stats', :locals => {daemon: @daemon} %>
+</div>
+
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">Container assigned  to this daemon</div>
+    <%= render :partial => 'containers/list', :locals => {containers: @daemon.containers} %>
+  </div>
+</div>
