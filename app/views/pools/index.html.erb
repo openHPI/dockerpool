@@ -23,7 +23,7 @@
         <td><%= pool.image %></td>
         <td><%= pool.min %></td>
         <td><%= pool.max %></td>
-        <td><%= pool.available_container_count %></td>
+        <td><%= pool.active_container_count %></td>
         <td>
           <%= link_to('Show stats', pool_path(pool), class: 'btn btn-default btn-xs') %>
           <%= link_to('Edit', edit_pool_path(pool), class: 'btn btn-default btn-xs') %>

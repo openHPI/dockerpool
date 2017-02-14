@@ -12,7 +12,25 @@ class Pool < ActiveRecord::Base
   def name
     image + ':' + id.to_s
   end
-  def available_container_count
+  def active_container_count
     containers.where(active: true).count
+  end
+  def active_containers
+    containers.where(active: true)
+  end
+  def available_containers
+    containers.where(active: true, blocked_since: nil)
+  end
+  def unavailable_containers
+    containers.where('active = TRUE and blocked_since <> NULL')
+  end
+  def destroyed_containers
+    containers.where(active: false)
+  end
+  def uncreated_containers_left
+    max - active_container_count
+  end
+  def can_create_container
+    (uncreated_containers_left > 0)
   end
 end

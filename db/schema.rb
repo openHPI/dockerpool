@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207163734) do
+ActiveRecord::Schema.define(version: 20170214151250) do
 
   create_table "consumers", force: :cascade do |t|
     t.string   "name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20161207163734) do
     t.datetime "updated_at",    null: false
     t.integer  "daemon_id"
     t.integer  "pool_id"
+    t.string   "mount_dir"
   end
 
   add_index "containers", ["consumer_id"], name: "index_containers_on_consumer_id"
